@@ -49,6 +49,23 @@ function draw() {
 
     // 描画モードを通常モード（BLEND）に戻す
     blendMode(BLEND);
+
+    // カウントを表示
+    fill(255);
+    text(`BPM : ${floor(gvm.bpm_)} / COUNT :  ${floor(gvm.count())}`, width*0.02, height*0.05);
+}
+
+// キーが押された際に呼び出される関数
+function keyPressed() {
+    // スペースキーが押されたときに、GVMのBPMをランダムな値に設定
+    if (keyCode === 32) {
+        gvm.tapTempo();
+    }
+
+    // Sキーが押されたときに、キャンバスをPNG形式で保存
+    if(keyCode === 83){
+        gvm.resetCount();
+    }
 }
 
 // ウィンドウサイズが変更された際に呼び出される関数
